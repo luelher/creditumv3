@@ -1,0 +1,16 @@
+- if flash.any?
+  .col-xs-12.col-sm-12
+    .box.ui-draggable.ui-droppable
+      .box-header
+        .box-name
+          %i.fa.fa-search
+          %span Mensajes
+        .box-icons
+          %a.collapse-link
+            %i.fa.fa-chevron-up
+          %a.expand-link
+            %i.fa.fa-expand
+          %a.close-link
+            %i.fa.fa-times
+        .no-move
+      = flash_messages

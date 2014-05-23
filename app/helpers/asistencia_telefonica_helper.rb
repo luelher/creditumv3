@@ -1,0 +1,2 @@
+module AsistenciaTelefonicaHelper
+end

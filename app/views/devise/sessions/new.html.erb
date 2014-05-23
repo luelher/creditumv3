@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-6 col-sm-12" style="text-align: center">
+    <div class="box ui-draggable ui-droppable">
+      <div class="box-header">
+        <div class="box-name">
+          <i class="fa fa-table"></i>
+          <h2 class="page-header">Autenticación</h1>
+        </div>
+        <div class="box-icons">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+          <a class="expand-link">
+            <i class="fa fa-expand"></i>
+          </a>
+          <a class="close-link">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+        <div class="no-move"></div>
+      </div>
+      <div class="box-content col-sm-12">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="row show-grid-forms">
+            <div class="col-sm-12"><%= f.label :username %><br />
+            <%= f.text_field :username, autofocus: true %></div>
+
+            <div class="col-sm-12"><%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off" %></div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
+
+            <div class="col-sm-12"><%= f.submit "Autenticar" %></div>
+          </div>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>

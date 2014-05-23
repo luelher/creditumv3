@@ -1,0 +1,33 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Escritorio", dashboard_path
+      %li
+        = link_to "Consultar Información Crediticia", informacion_crediticia_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Consultar Información Crediticia
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      %h4.page-header Cedula Cliente
+      .row
+        = form_tag(informacion_crediticia_path) do
+          .col-sm-2
+            = text_field_tag :cedula, "", class: "form-control", placeholder: "Nro. Cédula."
+          .col-sm-2
+            = submit_tag "Consultar", class: "btn btn-success"
+  

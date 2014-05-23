@@ -1,0 +1,35 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Escritorio", dashboard_path
+      %li
+        = link_to "Asistencia Telefónica", informacion_crediticia_path
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Asistencia Telefónica
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      - if @persona.nil?
+        %h5 Persona no encontrada
+      - else
+        = render partial: 'shared/info_casa_comercial'
+        %br
+        = render partial: 'shared/info_persona_consultada'
+        %br
+        = render partial: 'shared/info_historial_crediticio'
+      %br
+      = link_to "Nueva Consulta", asistencia_telefonica_path, class: "btn btn-default"
+

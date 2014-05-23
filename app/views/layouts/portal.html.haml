@@ -1,0 +1,101 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title Creditum.net - Información Crediticia a su alcance
+    / Meta
+    = csrf_meta_tag
+    %meta{charset: "UTF-8"}/
+    / %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    
+    = stylesheet_link_tag "portal/application", :media => :all
+    = javascript_include_tag "portal/application" # , "rails_admin/rails_admin.js"
+        
+  %body{class: controller_name}
+    #wrapper
+      #menu-wrapper
+        #menu.container
+          %ul
+            %li.current_page_item
+              = link_to "Principal", principal_path
+            %li
+              = link_to "Acerca", acerca_path
+            %li
+              = link_to "Contacto", contacto_path
+        / end #menu
+        #header-wrapper
+          #header.container
+            #logo
+              = image_tag "logo.png"
+              %h1
+                %a{href: "#"} Creditum.net
+              %p Información crediticia al Día
+      #page.container
+        = yield
+    #footer-wrapper
+      #footer.container
+        #box1
+          .title
+            %h2 Latest Post
+          %ul.style1
+            %li
+              %a{href: "#"} Semper mod quis eget mi dolore
+            %li
+              %a{href: "#"} Quam turpis feugiat sit dolor
+            %li
+              %a{href: "#"} Amet ornare in hendrerit in lectus
+            %li
+              %a{href: "#"} Consequat etiam lorem phasellus
+            %li
+              %a{href: "#"} Amet turpis, feugiat et sit amet
+            %li
+              %a{href: "#"} Semper mod quisturpis nisi
+        #box2
+          .title
+            %h2 Popular Links
+          %ul.style1
+            %li
+              %a{href: "#"} Semper mod quis eget mi dolore
+            %li
+              %a{href: "#"} Quam turpis feugiat sit dolor
+            %li
+              %a{href: "#"} Amet ornare in hendrerit in lectus
+            %li
+              %a{href: "#"} Consequat etiam lorem phasellus
+            %li
+              %a{href: "#"} Amet turpis, feugiat et sit amet
+            %li
+              %a{href: "#"} Semper mod quisturpis nisi
+        #box3
+          .title
+            %h2 Follow Us
+          %p Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet magna.
+          %ul.contact
+            %li
+              %a.icon.icon-twitter{href: "#"}
+                %span Twitter
+            %li
+              %a.icon.icon-facebook{href: "#"}
+                %span Facebook
+            %li
+              %a.icon.icon-dribbble{href: "#"}
+                %span Dribbble
+            %li
+              %a.icon.icon-tumblr{href: "#"}
+                %span Tumblr
+            %li
+              %a.icon.icon-rss{href: "#"}
+                %span Pinterest
+    #copyright.container
+      %p
+        \© Informadora de Crédito en Línea. Todos los Derechos Reservados. | Diseñado por 
+        = succeed "." do
+          %a{href: "http://grupoemporium.com", rel: "nofollow"} Grupo Emporium C.A.

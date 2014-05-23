@@ -1,0 +1,23 @@
+%h4.page-header Historial Crediticio
+%table.table.table-hover
+  %thead
+    %tr
+      %th Factura
+      %th Fecha Compra
+      %th Fecha Actualización
+      %th Monto
+      %th Mensualidad
+      %th Giros
+      %th Estado
+      %th Experiencia
+  %tbody        
+    - @persona.creditos.each do |cre|
+      %tr
+        %td= cre.factura
+        %td= cre.fecha_compra
+        %td= cre.fecha_operacion
+        %td= cre.monto
+        %td= cre.pago_mes
+        %td= cre.num_giros
+        %td= cre.estado
+        %td= cre.experiencia

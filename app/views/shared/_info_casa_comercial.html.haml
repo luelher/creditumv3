@@ -1,0 +1,14 @@
+%h4.page-header Casa Comercial
+%table.table.table-hover
+  %thead
+    %tr
+      %th Casa Comercial
+      %th Rif
+      %th Usuario
+      %th Cédula
+  %tbody
+    %tr
+      %td= @usuario.usuario.cliente.casa_comercial.nombre
+      %td= @usuario.usuario.cliente.casa_comercial.rif
+      %td= @usuario.usuario.nombre_completo
+      %td= @usuario.usuario.cedula

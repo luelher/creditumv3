@@ -1,0 +1,46 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Escritorio", dashboard_path
+      %li
+        = link_to "Asistencia Telefónica", asistencia_telefonica_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Asistencia Telefónica
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      = form_tag(asistencia_telefonica_path, id: "filter_form", class: "form-horizontal bootstrap-validator-form") do
+        %fieldset
+          .form-group
+            %label.col-sm-3.control-label Casa Comercial
+            .col-sm-5
+              - casa_comercial = CasaComercial.all.map { |cli| [cli.nombre, cli.id_casa_comercial] }
+              = select_tag :casa_comercial, options_for_select(casa_comercial), class: "form-control",  :prompt => "Seleccione Casa Comercial"
+            %small.help-block.col-sm-offset-3.col-sm-9{style: "display: none;"}
+          .form-group
+            %label.col-sm-3.control-label Usuario
+            #usuario.col-sm-5
+              = select_tag :usuario, "", class: "form-control", :prompt => "Seleccione Usuario"
+            %small.help-block.col-sm-offset-3.col-sm-9{style: "display: none;"}
+          .form-group
+            %label.col-sm-3.control-label Cedula
+            .col-sm-5
+              = text_field_tag :cedula, "", class: "form-control", placeholder: "Nro. Cédula."
+            %small.help-block.col-sm-offset-3.col-sm-9{style: "display: none;"}
+          .form-group
+            .col-sm-9.col-sm-offset-3
+              = submit_tag "Consultar", class: "btn btn-success"

@@ -1,0 +1,70 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Escritorio", dashboard_path
+      %li
+        = link_to "Consultar Información Crediticia", informacion_crediticia_path
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Consultar Información Crediticia
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      - if @persona.nil?
+        %h5 Persona no encontrada
+      - else
+        %h4.page-header Información del Cliente
+        %table.table.table-hover
+          %thead
+            %tr
+              %th Cédula
+              %th Nombre
+              %th Apellido
+              %th Teléfonos
+              %th Profesión
+          %tbody
+            %tr
+              %td= @persona.cedula
+              %td= @persona.nombre
+              %td= @persona.apellido
+              %td= "#{@persona.telefono} / #{@persona.celular}"
+              %td= @persona.profesion
+        %br
+        %h4.page-header Historial Crediticio
+        %table.table.table-hover
+          %thead
+            %tr
+              %th Factura
+              %th Fecha Compra
+              %th Fecha Actualización
+              %th Monto
+              %th Mensualidad
+              %th Giros
+              %th Estado
+              %th Experiencia
+          %tbody        
+            - @persona.creditos.each do |cre|
+              %tr
+                %td= cre.factura
+                %td= cre.fecha_compra
+                %td= cre.fecha_operacion
+                %td= cre.monto
+                %td= cre.pago_mes
+                %td= cre.num_giros
+                %td= cre.estado
+                %td= cre.experiencia
+      %br
+      = link_to "Nueva Consulta", informacion_crediticia_path, class: "btn btn-default"
+

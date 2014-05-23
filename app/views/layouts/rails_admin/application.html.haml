@@ -1,0 +1,136 @@
+!!!
+/[if lt IE 7] <html class="ie lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="ie lt-ie9 lt-ie8">
+/[if IE 8] <html class="ie lt-ie9">
+/[if gt IE 8] <html class="ie gt-ie8">
+/ [if !IE]><!
+%html
+  / <![endif]
+  %head
+    %title Creditum.net - Información Crediticia a su alcance
+    / Meta
+    = csrf_meta_tag
+    %meta{charset: "UTF-8"}/
+    / %meta{content: "width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "IE=9; IE=8; IE=7; IE=EDGE", "http-equiv" => "X-UA-Compatible"}/
+    
+    = stylesheet_link_tag "application", :media => :all
+    = javascript_include_tag "application" # , "rails_admin/rails_admin.js"
+        
+  %body{class: controller_name}
+
+    #screensaver
+      %canvas#canvas
+      %i#screen_unlock.fa.fa-lock
+    #modalbox
+      .devoops-modal
+        .devoops-modal-header
+          .modal-header-name
+            %span Basic table
+          .box-icons
+            %a.close-link
+              %i.fa.fa-times
+        .devoops-modal-inner
+        .devoops-modal-bottom
+    %header.navbar
+      .container-fluid.expanded-panel
+        .row
+          #logo.col-xs-12.col-sm-2
+            = link_to "Creditum.net", main_app.dashboard_path
+          #top-panel.col-xs-12.col-sm-10
+            .row
+              .col-xs-8.col-sm-4
+                %a.show-sidebar{href: "#"}
+                  %i.fa.fa-bars
+              .col-xs-4.col-sm-8.top-panel-right
+                %ul.nav.navbar-nav.pull-right.panel-menu
+                  %li.dropdown
+                    %a.dropdown-toggle.account{"data-toggle" => "dropdown", href: "#"}
+                      %i.fa.fa-angle-down.pull-right
+                      .user-mini.pull-right
+                        %span.welcome Bienvenido,
+                        %span
+                          = current_user.usuario.nombre_completo
+                    %ul.dropdown-menu
+                      %li
+                        = link_to main_app.edit_user_registration_path(current_user) do
+                          %i.fa.fa-user
+                          %span.hidden-sm.text Perfil
+                      %li
+                        = link_to main_app.destroy_user_session_path, method: :delete do
+                          %i.fa.fa-power-off
+                          %span.hidden-sm.text Cerrar Sesión
+    / End Header
+    / Start Container
+    #main.container-fluid
+      .row
+        #sidebar-left.col-xs-2.col-sm-2
+          %ul.nav.main-menu
+            %li
+              = link_to main_app.dashboard_path, class: "active " do
+                %i.fa.fa-dashboard
+                %span.hidden-xs Escritorio
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle " do
+                %i.fa.fa-book
+                %span.hidden-xs Gestión de Consultas
+              %ul.dropdown-menu
+                / %li
+                /   = link_to "Consultas", "#", class: ""
+                %li
+                  = link_to "Información Crediticia", main_app.informacion_crediticia_path, class: ""
+                - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR)
+                  %li
+                    = link_to "Asistencia Telefónica", main_app.asistencia_telefonica_path, class: ""
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle " do
+                %i.fa.fa-cloud-upload
+                %span.hidden-xs Importar
+              %ul.dropdown-menu
+                %li
+                  = link_to "Archivos", main_app.en_construccion_path, class: ""
+                %li
+                  = link_to "Registros", main_app.en_construccion_path, class: ""
+            - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+              %li.dropdown
+                = link_to "#", class: "dropdown-toggle " do
+                  %i.fa.fa-gears
+                  %span.hidden-xs Consumos
+                %ul.dropdown-menu
+                  %li
+                    = link_to "Estado de Cuenta", main_app.en_construccion_path, class: ""
+                  %li
+                    = link_to "Facturación", main_app.en_construccion_path, class: ""
+            - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR)
+              %li.dropdown
+                = link_to "#", class: "dropdown-toggle " do
+                  %i.fa.fa-money
+                  %span.hidden-xs Facturación
+                %ul.dropdown-menu
+                  %li
+                    = link_to "Generar Facturas", main_app.en_construccion_path, class: ""
+                  %li
+                    = link_to "Historial de Facturas", main_app.en_construccion_path, class: ""
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle " do
+                %i.fa.fa-group
+                %span.hidden-xs Usuarios
+              %ul.dropdown-menu
+                - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+                  %li
+                    = link_to "Administración de Usuarios", main_app.en_construccion_path, class: ""
+                %li
+                  = link_to "Perfíl de Usuario", main_app.edit_user_registration_path(current_user), class: ""
+            %li.dropdown
+              = link_to main_app.destroy_user_session_path, method: :delete do
+                %i.fa.fa-power-off
+                %span.hidden-xs Cerrar Sesión
+        / Start Content
+        #content.col-xs-12.col-sm-10{:'data-pjax-container' => true}
+          #ajax-content
+            = render :template => 'layouts/rails_admin/pjax'
+        / End Content
+    = yield :js
+    

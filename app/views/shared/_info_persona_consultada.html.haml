@@ -1,0 +1,16 @@
+%h4.page-header Información de la persona consultada
+%table.table.table-hover
+  %thead
+    %tr
+      %th Cédula
+      %th Nombre
+      %th Apellido
+      %th Teléfonos
+      %th Profesión
+  %tbody
+    %tr
+      %td= @persona.cedula
+      %td= @persona.nombre
+      %td= @persona.apellido
+      %td= "#{@persona.telefono} / #{@persona.celular}"
+      %td= @persona.profesion

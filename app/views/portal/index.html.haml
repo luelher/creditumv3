@@ -1,0 +1,20 @@
+#content
+  .title
+    %h2 Integer sit amet aliquet
+    %span.byline Phasellus nec erat sit amet nibh pellentesque congue
+  %p
+    This is
+    = succeed "," do
+      %strong GrassyGreen
+    = succeed "." do
+      %a{href: "http://templated.co", rel: "nofollow"} TEMPLATED
+    = succeed "." do
+      %a{href: "http://fotogrph.com/"} Fotogrph
+    %a{href: "http://templated.co/license"} Creative Commons Attribution
+    license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :)
+  %p Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet at, ultrices eget, ornare et, wisi. Pellentesque adipiscing purus ac magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.  Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna.
+#sidebar
+  .box2
+    .title
+      %h2 Nuestra Plataforma
+    = link_to "Inicial Sesion", user_session_path, class: "button"
