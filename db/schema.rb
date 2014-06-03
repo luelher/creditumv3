@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(version: 20140522032944) do
     t.string  "telefono",     limit: 15
     t.string  "celular",      limit: 15
     t.string  "nacionalidad", limit: 10, default: "VENEZOLANO"
-    t.boolean "id_nivel",                                       null: false
+    t.integer "id_nivel",     limit: 1,                         null: false
     t.date    "fecha"
   end
 

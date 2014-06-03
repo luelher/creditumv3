@@ -1,0 +1,75 @@
+%ul.nav.main-menu
+  %li
+    = link_to dashboard_path, class: "active " do
+      %i.fa.fa-dashboard
+      %span.hidden-xs Escritorio
+  %li.dropdown
+    = link_to "#", class: "dropdown-toggle " do
+      %i.fa.fa-book
+      %span.hidden-xs Gestión de Consultas
+    %ul.dropdown-menu
+      / %li
+      /   = link_to "Consultas", "#", class: ""
+      %li
+        = link_to "Información Crediticia", main_app.informacion_crediticia_path, class: ""
+      - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR)
+        %li
+          = link_to "Asistencia Telefónica", main_app.asistencia_telefonica_path, class: ""
+  %li.dropdown
+    = link_to "#", class: "dropdown-toggle " do
+      %i.fa.fa-cloud-upload
+      %span.hidden-xs Importar
+    %ul.dropdown-menu
+      %li
+        = link_to "Archivos", main_app.en_construccion_path, class: ""
+      %li
+        = link_to "Registros", main_app.en_construccion_path, class: ""
+  - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+    %li.dropdown
+      = link_to "#", class: "dropdown-toggle " do
+        %i.fa.fa-gears
+        %span.hidden-xs Consumos
+      %ul.dropdown-menu
+        %li
+          = link_to "Estado de Cuenta", main_app.en_construccion_path, class: ""
+        %li
+          = link_to "Facturación", main_app.en_construccion_path, class: ""
+  - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR)
+    %li.dropdown
+      = link_to "#", class: "dropdown-toggle " do
+        %i.fa.fa-money
+        %span.hidden-xs Facturación
+      %ul.dropdown-menu
+        %li
+          = link_to "Generar Facturas", main_app.en_construccion_path, class: ""
+        %li
+          = link_to "Historial de Facturas", main_app.en_construccion_path, class: ""
+  %li.dropdown
+    = link_to "#", class: "dropdown-toggle " do
+      %i.fa.fa-group
+      %span.hidden-xs Usuarios
+    %ul.dropdown-menu
+      - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+        %li
+          = link_to "Administración de Usuarios", main_app.en_construccion_path, class: ""
+      %li
+        = link_to "Perfíl de Usuario", main_app.edit_user_registration_path(current_user), class: ""
+  %li.dropdown
+    = link_to "#", class: "dropdown-toggle " do
+      %i.fa.fa-cubes
+      %span.hidden-xs Administración
+    %ul.dropdown-menu
+      - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+        %li
+          = link_to "Usuarios", admin.index_path('usuario'), class: ""
+        %li
+          = link_to "Casas Comerciales", admin.index_path('casa_comercial'), class: ""
+        %li
+          = link_to "Clientes", admin.index_path('cliente'), class: ""
+        %li
+          = link_to "Configuración de Clientes", admin.index_path('cliente_conf'), class: ""
+        %li
+          = link_to "Facturas", admin.index_path('facturas'), class: ""
+    = link_to main_app.destroy_user_session_path, method: :delete do
+      %i.fa.fa-power-off
+      %span.hidden-xs Cerrar Sesión

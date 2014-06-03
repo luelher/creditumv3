@@ -1,0 +1,101 @@
+/* Estilos específicos de Papiro para Rails Admin*/
+
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "rails_admin/aristo/jquery-ui-1.8.7.custom";
+@import "rails_admin/ra.filtering-multiselect";
+
+body.rails_admin {
+  /* == Search form ==*/
+  .navbar-form input[type=search] { height: 26px; padding: 7px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; }
+  #filters_box .filter { position: relative; left: 0 }
+  #filters_box .filter .label { width: 160px; line-height: 20px; }
+  hr.filters_box { margin: 20px 0 10px }
+  .datatable-header .form-filter { padding: 10px; }
+  
+  /* == List (Index) == */
+  #list table, .table {
+    td.links { white-space: nowrap; 
+      ul.inline li { float: left }
+    }
+    .shrink { width: 1px; white-space: nowrap; }
+    .sorting_desc, .sorting_asc, .sorting { cursor:pointer }
+  }
+  
+  /* Forms Fields */
+  input[type="integer"] { 
+    height: 30px; 
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+    background-color: #ffffff; border: 1px solid #dadada; 
+  	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.02), 0 1px 0 #ffffff; 
+  	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.02), 0 1px 0 #ffffff; 
+  	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.02), 0 1px 0 #ffffff; 
+    display: inline-block; 
+    padding: 8px 7px; 
+    font-size: 11px; 
+    color: #5F5F5F; 
+    font-family: Arial, Helvetica, sans-serif; 
+  }
+  
+  .control-group { margin-top: 0; padding: 10px 16px; 
+    .controls p.help-block { margin-top: 0 }
+  }
+  
+  /* Buttons */
+  .form-actions{ 
+    border-top: 1px solid #dadada; 
+    @include box-shadow(inset 0 1px 0 $white);
+    .btn { line-height: 16px; }
+  }
+  
+  /* Show */
+  dl.show-fields {
+    dt { margin-top: 5px;
+      .label { @include border-radius(3px); }
+    }
+    dd { margin-bottom: 5px;
+      pre { margin-top: -7px; }
+    }
+  }
+  
+  /* Delete */
+  ul.delete-notice { margin-top: 15px; margin-bottom: 15px; }
+  
+  /* Sidebar */
+  #left-sidebar .nav-header { display:none }
+  
+  /* Rails Admin Select boxes and association widgets */
+  .ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {
+    padding: .1em;
+  }
+  
+  .belongs_to_association_type {
+    .filtering-select { margin-bottom: 0;
+      label { margin-bottom: 0 }
+    }
+    .btn { padding: 7px 12px 6px 12px; line-height: 13px; margin: 0; margin-top: 1px; }
+    .btn [class^="icon-"] {margin-top: -1px;}
+    p.help-block { clear: left }
+  }
+  
+  .has_many_association_type,
+  .has_and_belongs_to_many_association_type {
+    .btn { padding: 7px 12px 6px 12px; line-height: 13px; margin: 0; margin-top: 1px; }
+    .btn [class^="icon-"] {margin-top: -1px;}
+    p.help-block { clear: left }
+    .ra-multiselect-header .ra-multiselect-search { min-width: 200px; }
+    .ra-multiselect-left { 
+      .wrapper { margin: 0 }
+      .ra-multiselect-item-add-all { line-height: 16px; vertical-align: top; }
+    }
+    .ra-multiselect-right { 
+      .wrapper { margin: 0 }
+      .ra-multiselect-item-remove-all { line-height: 16px; vertical-align: top; }
+    }
+    
+  }
+  
+}

@@ -37,47 +37,30 @@
               = image_tag "logo.png"
               %h1
                 %a{href: "#"} Creditum.net
-              %p Información crediticia al Día
+              %p Información crediticia al al instante
       #page.container
         = yield
     #footer-wrapper
       #footer.container
         #box1
           .title
-            %h2 Latest Post
+            %h1 Pruébalo
           %ul.style1
             %li
-              %a{href: "#"} Semper mod quis eget mi dolore
+              = link_to "Contáctanos", contacto_path 
+              , y prueba nuestra plataforma
             %li
-              %a{href: "#"} Quam turpis feugiat sit dolor
-            %li
-              %a{href: "#"} Amet ornare in hendrerit in lectus
-            %li
-              %a{href: "#"} Consequat etiam lorem phasellus
-            %li
-              %a{href: "#"} Amet turpis, feugiat et sit amet
-            %li
-              %a{href: "#"} Semper mod quisturpis nisi
+              Disfruta de nuestro período de prueba, donde tendrás acceso a la información de manera gratuita por 30 días, evalúa nuestro servicio.
         #box2
           .title
-            %h2 Popular Links
+            %h1 Escríbenos
           %ul.style1
             %li
-              %a{href: "#"} Semper mod quis eget mi dolore
-            %li
-              %a{href: "#"} Quam turpis feugiat sit dolor
-            %li
-              %a{href: "#"} Amet ornare in hendrerit in lectus
-            %li
-              %a{href: "#"} Consequat etiam lorem phasellus
-            %li
-              %a{href: "#"} Amet turpis, feugiat et sit amet
-            %li
-              %a{href: "#"} Semper mod quisturpis nisi
+              Escríbenos dándonos tu opinión. Para enviarnos un correo electrónico pulsa aquí.
         #box3
           .title
-            %h2 Follow Us
-          %p Proin eu wisi suscipit nulla suscipit interdum. Aenean lectus lorem, imperdiet magna.
+            %h2 Síguenos
+          %p Mantente al día con nuestros noticias y nuevos servicios
           %ul.contact
             %li
               %a.icon.icon-twitter{href: "#"}
