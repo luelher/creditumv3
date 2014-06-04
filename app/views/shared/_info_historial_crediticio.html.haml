@@ -2,6 +2,7 @@
 %table.table.table-hover
   %thead
     %tr
+      %th Casa Comercial
       %th Factura
       %th Fecha Compra
       %th Fecha Actualización
@@ -13,11 +14,12 @@
   %tbody        
     - @persona.creditos.each do |cre|
       %tr
+        %td= cre.cliente.casa_comercial.nombre
         %td= cre.factura
         %td= cre.fecha_compra
         %td= cre.fecha_operacion
         %td= cre.monto
         %td= cre.pago_mes
         %td= cre.num_giros
-        %td= cre.estado
+        %td= cre.estado_humanizado
         %td= cre.experiencia

@@ -14,4 +14,8 @@ class Credito < ActiveRecord::Base
   def es_juridica?
     persona_natural.nil?
   end
+
+  def estado_humanizado
+    estado == 1 ? "Cancelado" : "Activo"
+  end
 end
