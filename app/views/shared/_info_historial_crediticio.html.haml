@@ -14,7 +14,7 @@
   %tbody        
     - @persona.creditos.each do |cre|
       %tr
-        %td= cre.cliente.casa_comercial.nombre
+        %td= cre.cliente.casa_comercial.nil? ? "Sin Casa Comercial" : cre.cliente.casa_comercial.nombre 
         %td= cre.factura
         %td= cre.fecha_compra
         %td= cre.fecha_operacion
