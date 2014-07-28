@@ -13,6 +13,8 @@
  *= require plugins/fancybox/jquery.fancybox
  *= require plugins/fullcalendar/fullcalendar
  *= require plugins/select2/select2
+ *= require plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min
+ *= require plugins/fineuploader/fineuploader-4.3.1
  *= require css/font-awesome
  *= require style
  *= require_directory .

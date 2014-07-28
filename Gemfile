@@ -36,7 +36,11 @@ gem 'psych'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# group :development do
+#   gem 'capistrano'
+#   gem 'capistrano-rails'
+#   gem 'rvm1-capistrano3'
+# end
 
 # To use debugger
 # gem 'debugger'

@@ -1,0 +1,43 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Importar", dashboard_path
+      %li
+        = link_to "Importar Archivos de Información Crediticia", importar_archivos_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Importar Archivos de Información Crediticia
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      / %h5.page-header Registros Actualizados en los ultimos 30 días
+      / .row
+      /   .col-sm-2
+      /     %h5 10 Registros
+      = form_tag(importar_archivos_path, :multipart => true) do
+        %h5.page-header Selecciona el Archivo
+        .row
+          .col-sm-8
+            = file_field_tag :archivo
+        %br
+        %h5.page-header Tipo de Archivo
+        .row
+          .col-sm-2
+            = select_tag :tipo, options_for_select(Credito::FORMATOS_ARCHIVOS)
+        %br        
+        .row
+          .col-sm-2
+            = submit_tag "Importar", class: "btn btn-success"

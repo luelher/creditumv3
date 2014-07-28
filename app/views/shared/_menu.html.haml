@@ -15,15 +15,16 @@
       - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR)
         %li
           = link_to "Asistencia Telefónica", main_app.asistencia_telefonica_path, class: ""
-  %li.dropdown
-    = link_to "#", class: "dropdown-toggle " do
-      %i.fa.fa-cloud-upload
-      %span.hidden-xs Importar
-    %ul.dropdown-menu
-      %li
-        = link_to "Archivos", main_app.en_construccion_path, class: ""
-      %li
-        = link_to "Registros", main_app.en_construccion_path, class: ""
+  - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR) || current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR)
+    %li.dropdown
+      = link_to "#", class: "dropdown-toggle " do
+        %i.fa.fa-cloud-upload
+        %span.hidden-xs Importar
+      %ul.dropdown-menu
+        %li
+          = link_to "Archivos", main_app.importar_archivos_path, class: ""
+        %li
+          = link_to "Registros", main_app.importar_registros_path, class: ""
   - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
     %li.dropdown
       = link_to "#", class: "dropdown-toggle " do

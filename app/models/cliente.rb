@@ -1,6 +1,6 @@
 class Cliente < ActiveRecord::Base
     self.table_name = "clientes"
-    self.alias_attribute :id, :id_cliente
+    #self.alias_attribute :id, :id_cliente
     self.primary_key = :id_cliente
 
     has_one :cliente_conf, foreign_key: "id_cliente"

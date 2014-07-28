@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require plugins/jquery-ui/jquery-ui.min
 //= require plugins/bootstrap/bootstrap.min
 //= require plugins/justified-gallery/jquery.justifiedgallery.min
 //= require plugins/tinymce/tinymce.min
 //= require plugins/tinymce/jquery.tinymce.min
+//= require plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon
+//= require plugins/jquery-ui/i18n/jquery.ui.datepicker-es.min
+//= require plugins/fineuploader/jquery.fineuploader-4.3.1.min
 //= require devoops
 //= require_directory .

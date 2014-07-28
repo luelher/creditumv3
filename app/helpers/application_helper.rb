@@ -4,7 +4,7 @@ module ApplicationHelper
     html = ""
     flash.each do |key, value|
       html << content_tag(:div, 
-        raw("<p class=\"bg-#{key}\">" + value + "</p>"),
+        raw("<p class=\"bg-#{key}\">" + value.html_safe + "</p>"),
         :class => "box-content")
     end
     

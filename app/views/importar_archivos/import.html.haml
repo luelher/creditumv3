@@ -1,0 +1,35 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Importar", dashboard_path
+      %li
+        = link_to "Importar Registros de Información Crediticia", importar_registros_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Resultados Importación
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      / %h5.page-header Registros Actualizados en los ultimos 30 días
+      / .row
+      /   .col-sm-2
+      /     %h5 10 Registros
+      %h5.page-header
+        = "#{@procesados[0]} Registros Importados"
+        %br
+        = "#{@procesados[1]} Registros con errores"
+      %br
+      = link_to "Importar de nuevo", importar_archivos_path, class: "btn btn-default"

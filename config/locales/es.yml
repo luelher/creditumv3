@@ -1,0 +1,41 @@
+es:
+  activerecord:
+    models:
+      cliente_persona: "Cliente"
+      persona_natural: "Persona Natural"
+    attributes:
+      persona_natural:
+        cedula: "Cédula"
+      credito:
+        fecha_compra: "Fecha Compra"
+        pago_mes: "Pago Mensual"
+        num_giros: "Giros"
+      credito/cliente_persona/persona_natural: 
+          cedula: "Cedula Cliente"
+          nombre: "Nombre Cliente"
+          apellido: "Apellido Cliente"
+    errors:
+      models:
+        credito:
+          attributes:
+            factura:
+              blank: "El nro de factura no puede estar en blanco"
+            fecha_compra:
+              blank: "La fecha de compra no puede estar en blanco"
+            monto:
+              blank: "El monto no puede estar en blanco"
+              not_a_number: "El valor introducido no es un monto"
+            pago_mes:
+              blank: "El pago mensual no puede estar en blanco"
+              not_a_number: "El valor introducido no es un monto"
+            num_giros:
+              blank: "La cantidad de giros no puede estar en blanco"
+              not_a_number: "El valor introducido no es un entero"
+        persona_natural:
+          attributes:
+            cedula:
+              blank: "La cédula no puede estar en blanco"
+            nombre: 
+              blank: "El nombre no puede estar en blanco" 
+            apellido: 
+              blank: "El apellido no puede estar en blanco"

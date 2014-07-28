@@ -1,0 +1,19 @@
+// Place all the styles related to the importar_registros controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.grid-import input {
+  font-size: 12px;
+  text-align: left;
+  padding: 2px 10px !important;
+}
+
+.grid-import input:focus {
+  font-size: 12px;
+  text-align: left;
+  padding: 2px 10px !important;
+}
+
+.grid-import .bg-danger {
+  color: #333 !important;
+}

@@ -30,7 +30,8 @@ module Creditumv3
     
     config.autoload_paths += %W(
       #{config.root}/app/decorators,
-      #{config.root}/lib
+      #{config.root}/lib,
+      #{config.root}/lib/import
     )
 
   end

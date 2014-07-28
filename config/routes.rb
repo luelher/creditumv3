@@ -19,6 +19,13 @@ Creditumv3::Application.routes.draw do
   post 'search_users' => 'asistencia_telefonica#search_users'
   post 'asistencia_telefonica' => 'asistencia_telefonica#search'
 
+  get 'importar_registros' => 'importar_registros#index'
+  post 'importar_registros' => 'importar_registros#import'
+  post 'search_personas' => 'importar_registros#search_personas'
+  post 'search_facturas' => 'importar_registros#search_facturas'
+
+  get 'importar_archivos' => 'importar_archivos#index'
+  post 'importar_archivos' => 'importar_archivos#import'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
