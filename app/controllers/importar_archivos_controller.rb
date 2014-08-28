@@ -17,6 +17,7 @@ class ImportarArchivosController < ApplicationController
     if tipo == '0'
       generica = Generica.new
       generica.archivo = archivo
+      generica.cliente = cliente
       @procesados = generica.importar
     else
       @procesados = [0,0]
