@@ -12,6 +12,7 @@ class ImportarArchivosController < ApplicationController
     archivo = cliente.to_s+"_"+DateTime.now.strftime("%Y%m%d%H%M")+"_"+uploaded_io.original_filename
     file = File.open(Rails.root.join('uploads', archivo), 'wb')
     file.write(uploaded_io.read)
+    file.close
     
     tipo = params[:tipo]
     if tipo == '0'
