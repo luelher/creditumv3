@@ -1,0 +1,2 @@
+module DetalleFacturacionHelper
+end

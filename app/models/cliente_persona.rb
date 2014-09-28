@@ -9,6 +9,8 @@ class ClientePersona < ActiveRecord::Base
 
   has_many :creditos, primary_key: 'id_cliente_persona', foreign_key: "id_cliente_persona"
 
+  scope :personas_por_cliente, ->(cli){where(:id_cliente => cli).count}
+
   accepts_nested_attributes_for :persona_natural
 
   validates :persona_natural, presence: true

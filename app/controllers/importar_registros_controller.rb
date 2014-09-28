@@ -21,6 +21,11 @@ class ImportarRegistrosController < ApplicationController
       if !v["id"].empty?
         cre = Credito.find(v["id"])
         if v["experiencia"].to_i > cre.experiencia
+          cre.factura = v["factura"]
+          cre.fecha_compra = v["fecha_compra"]
+          cre.pago_mes = v["pago_mes"]
+          cre.num_giros = v["num_giros"]
+          cre.monto = v["monto"]
           cre.experiencia = v["experiencia"]
         end
       else
@@ -50,7 +55,6 @@ class ImportarRegistrosController < ApplicationController
     @guardados = 0
     @creditos.each do |credito|
       unless credito.cliente_persona.persona_natural.nombre.to_s.empty?
-        puts "entro"
         if credito.new_record?
           flash[:danger] = ""
           unless credito.cliente_persona.persona_natural.save

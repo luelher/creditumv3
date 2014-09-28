@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522032944) do
+ActiveRecord::Schema.define(version: 20140928035236) do
 
   create_table "casas_comerciales", primary_key: "id_casa_comercial", force: true do |t|
     t.string "nombre",    limit: 60,  null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20140522032944) do
   add_index "creditos", ["id"], name: "INDEX_ID", unique: true, using: :btree
   add_index "creditos", ["id_cliente_persona"], name: "INDEX_ID_CP", using: :btree
 
-  create_table "detalle_facturas", id: false, force: true do |t|
+  create_table "detalle_facturas", force: true do |t|
     t.integer  "id_factura",                null: false
     t.integer  "cedula_usuario",            null: false
     t.string   "id_persona",     limit: 15, null: false

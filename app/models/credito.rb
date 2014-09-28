@@ -18,6 +18,8 @@ class Credito < ActiveRecord::Base
 
   has_one :cliente_persona, primary_key: 'id_cliente_persona', foreign_key: "id_cliente_persona"
 
+  scope :cantidad_de_creditos_por_cliente, ->(cli){joins(:cliente_persona).where(:clientes_personas => {:id_cliente => cli}).count}
+
   # attr_accessor :cedula, :nombre, :apellido
 
   # validates_presence_of :cliente

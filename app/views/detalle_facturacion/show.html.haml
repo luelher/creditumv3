@@ -1,0 +1,69 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Consumo", dashboard_path
+      %li
+        = link_to "Historial de Facturación", detalle_facturacion_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Detalle de Facturas
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      = hidden_field_tag :acertadas, @acertadas.count
+      = hidden_field_tag :fallidas, @fallidas.count
+      .row
+        .col-sm-5
+          %h4.page-header Resumen de la Factura
+          = select_tag :id, options_from_collection_for_select(@facturas, :id_factura, :fecha_hasta, params[:id])
+          %br
+          = "Fecha de Emisión: #{@factura.fecha_hasta}"
+        .col-sm-5
+          %h4.page-header 
+            = "Resumen de Consultas Facturadas"
+          #graf-estado-cuenta
+        .col-sm-4
+          %h4.page-header Detalle de Consultas Facturadas
+          %h5 Acertadas
+          %table.table.table-hover
+            %thead
+              %tr
+                %th Usuario
+                %th Cliente
+                %th Fecha
+            %tbody
+              - @acertadas.each do |acertada|
+                %tr
+                  %td= acertada.usuario.nombre_completo unless acertada.usuario.nil?
+                  %td= acertada.id_persona
+                  %td= acertada.fecha_hora
+        .col-sm-4
+          %h4.page-header Detalle de Consultas
+          %h5 Fallidas
+          %table.table.table-hover
+            %thead
+              %tr
+                %th Usuario
+                %th Cliente
+                %th Fecha
+            %tbody
+              - @fallidas.each do |fallida|
+                %tr
+                  %td= fallida.usuario.nombre_completo unless fallida.usuario.nil?
+                  %td= fallida.id_persona
+                  %td= fallida.fecha_hora
+
+          

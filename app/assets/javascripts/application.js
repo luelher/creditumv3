@@ -20,5 +20,7 @@
 //= require plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon
 //= require plugins/jquery-ui/i18n/jquery.ui.datepicker-es.min
 //= require plugins/fineuploader/jquery.fineuploader-4.3.1.min
+//= require plugins/raphael/raphael
+//= require plugins/morris/morris
 //= require devoops
 //= require_directory .

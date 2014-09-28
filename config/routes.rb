@@ -27,6 +27,11 @@ Creditumv3::Application.routes.draw do
   get 'importar_archivos' => 'importar_archivos#index'
   post 'importar_archivos' => 'importar_archivos#import'
 
+  get 'estado_cuenta' => 'estado_cuenta#index'
+
+  get 'detalle_facturacion/:id' => 'detalle_facturacion#show', as: 'detalle_facturacion_show'
+  get 'detalle_facturacion' => 'detalle_facturacion#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

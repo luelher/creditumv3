@@ -2,6 +2,8 @@ class Generica
   attr_accessor :archivo, :cliente
 
   def importar
+    logger = Logger.new('log/importado.log')
+    logger.info "#{DateTime.now.to_s} - Cliente (#{cliente}): Inicio de Importación"
     procesados = 0
     errores = 0
     File.readlines(Rails.root.join('uploads', archivo)).each do |line|
@@ -12,9 +14,11 @@ class Generica
           procesados += 1
         else
           errores += 1
+          logger.info "#{DateTime.now.to_s} - Cliente (#{cliente}): Error al importar (#{line.chomp})"
         end
       else
         errores += 1
+        logger.info "#{DateTime.now.to_s} - Cliente (#{cliente}): Error al importar (#{line.chomp})"
       end
     end
 
@@ -99,11 +103,11 @@ class Generica
   def verificar_natural(t)
     persona_natural = PersonaNatural.find_by_cedula(t[:cedula])
     if persona_natural
-      cliente_persona = ClientePersona.joins(:personas_naturales).where(:id_cliente => cliente, :persona_natural => {:cedula => t[:cedula]}).first
+      cliente_persona = ClientePersona.joins(:persona_natural).where(:id_cliente => cliente, :personas_naturales => {:cedula => t[:cedula]}).first
       unless cliente_persona
         cliente_persona = ClientePersona.new(:id_persona => t[:cedula], :id_cliente => cliente)
         cliente_persona.save
-        cliente_persona
+        cliente_persona.id_cliente_persona
       else
         cliente_persona.id_cliente_persona
       end      
@@ -118,10 +122,11 @@ class Generica
   def verificar_juridico(t)
     persona_juridica = PersonaJuridica.find_by_rif(t[:cedula])
     if persona_juridica
-      cliente_persona = PersonaJuridica.joins(:clientes_personas).where(:rif => t[:cedula], :clientes_personas => {:id_cliente => cliente}).first
+      cliente_persona = ClientePersona.joins(:persona_juridica).where(:id_cliente => cliente, :personas_juridicas => {:rif => t[:cedula]}).first
       unless cliente_persona
         cliente_persona = ClientePersona.new(:id_persona => t[:cedula], :id_cliente => cliente)
-        cliente_persona.save()
+        cliente_persona.save
+        cliente_persona.id_cliente_persona
       end
       cliente_persona.id_cliente_persona
     else
@@ -187,13 +192,13 @@ class Generica
   def actualizar_cliente(procesados, errores)
     logger = Logger.new('log/importado.log')
     begin
-      clientesconf = ClienteConf.where(:id_cliente, cliente);
+      clientesconf = ClienteConf.where(:id_cliente => cliente).first;
 
       if clientesconf
 
-        clientesconf.suma += procesados;
+        clientesconf.consultas += procesados
         
-        clientesconf.save();
+        clientesconf.save
 
         logger.info "#{DateTime.now.to_s} - Cliente (#{clientesconf.id_cliente}): #{clientesconf.cliente.casa_comercial.nombre} - #{clientesconf.cliente.nombre}"
         logger.info "#{DateTime.now.to_s} - Cliente (#{clientesconf.id_cliente}): procesados=#{procesados}, errores=#{errores}"                
@@ -203,6 +208,7 @@ class Generica
       end
       true
     rescue Exception => e
+      logger.info "#{DateTime.now.to_s} - Cliente (#{cliente}): Error al Actualizar!!!!"
       false
     end
   end
