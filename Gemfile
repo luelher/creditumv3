@@ -50,3 +50,5 @@ gem 'devise'
 gem 'cancan'
 
 gem 'rails_admin'
+
+gem 'thinreports-rails'

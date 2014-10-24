@@ -1,0 +1,26 @@
+  #Se definen los layout a utilizar
+  report.set_layout :tlf => 'informacion_crediticia/referencia', layout_options: { default: true }
+
+  #Primera página
+  report.start_new_page
+
+  # report.page.item(:logo).value()
+  report.page.item(:casa_comercial).value("Agencia Royal 33 C.A.")
+  report.page.item(:direccion).value("La Direccion")
+  report.page.item(:telefono).value("0424-5558074")
+  report.page.item(:descripcion).value("Calle 33 con av 20")
+  report.page.item(:pie).value("Constancia que se expide a petición de la parte interesada en Barquisimeto a los xx días del mes de yy del aa")
+  # report.page.item(:logo).value()
+
+  # report.page.list(:lista_creditos) do |list|
+  #   @creditos.each do |s|
+  #     list.add_row do |row|
+  #       row.item(:fecha_compra).value("fecha compra")
+  #       row.item(:monto).value("1.000,00") 
+  #       row.item(:giros).value("12") 
+  #       row.item(:mensual).value("1.000,00") 
+  #       row.item(:fecha_cancelacion).value("fecha cancelacion")
+  #       row.item(:experiencia).value("1")
+  #     end
+  #   end
+  # end

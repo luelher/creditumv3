@@ -1,4 +1,6 @@
 class EstadoCuentaController < ApplicationController
+  authorize_resource class: EstadoCuentaController
+  before_action :authenticate_user!
 
   def index
     current_user.usuario.cliente

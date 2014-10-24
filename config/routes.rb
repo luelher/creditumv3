@@ -14,6 +14,7 @@ Creditumv3::Application.routes.draw do
 
   get 'informacion_crediticia' => 'informacion_crediticia#index'
   post 'informacion_crediticia' => 'informacion_crediticia#search'
+  get 'referencia_comercial/:id' => 'informacion_crediticia#referencia', as: 'referencia_comercial'
 
   get 'asistencia_telefonica' => 'asistencia_telefonica#index'
   post 'search_users' => 'asistencia_telefonica#search_users'

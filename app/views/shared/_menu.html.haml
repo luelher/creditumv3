@@ -25,7 +25,7 @@
           = link_to "Archivos", main_app.importar_archivos_path, class: ""
         %li
           = link_to "Registros", main_app.importar_registros_path, class: ""
-  - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+  - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR) || current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR)
     %li.dropdown
       = link_to "#", class: "dropdown-toggle " do
         %i.fa.fa-gears
@@ -55,12 +55,12 @@
           = link_to "Administración de Usuarios", main_app.en_construccion_path, class: ""
       %li
         = link_to "Perfíl de Usuario", main_app.edit_user_registration_path(current_user), class: ""
-  %li.dropdown
-    = link_to "#", class: "dropdown-toggle " do
-      %i.fa.fa-cubes
-      %span.hidden-xs Administración
-    %ul.dropdown-menu
-      - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
+  - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)        
+    %li.dropdown
+      = link_to "#", class: "dropdown-toggle " do
+        %i.fa.fa-cubes
+        %span.hidden-xs Administración
+      %ul.dropdown-menu
         %li
           = link_to "Usuarios", admin.index_path('usuario'), class: ""
         %li

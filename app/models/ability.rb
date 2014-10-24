@@ -20,7 +20,9 @@ class Ability
     elsif user && user.es?(Nivel::CONSULTOR_ADMINISTRADOR)
       # Habilidades específicas de CONSULTOR_ADMINISTRADOR
       can :manage, ImportarRegistrosController
-      can :manager, ImportarArchivosController
+      can :manage, ImportarArchivosController
+      can :manage, DetalleFacturacionController
+      can :manage, EstadoCuentaController
     end
 
 

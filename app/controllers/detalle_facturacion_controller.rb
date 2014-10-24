@@ -1,5 +1,7 @@
 class DetalleFacturacionController < ApplicationController
-
+  authorize_resource class: DetalleFacturacionController
+  before_action :authenticate_user!
+  
   def index
     if params[:id]
       redirect_to detalle_facturacion_show_path(params[:id])
