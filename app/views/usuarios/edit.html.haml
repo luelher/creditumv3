@@ -1,0 +1,30 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Usuarios", dashboard_path
+      %li
+        = link_to "Administración", usuarios_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Editar Usuario
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      .row
+        .col-sm-8
+          = render 'form'
+          |
+          \#{link_to 'Atrás', usuarios_path}

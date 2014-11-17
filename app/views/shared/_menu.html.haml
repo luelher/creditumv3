@@ -50,12 +50,12 @@
     %ul.dropdown-menu
       - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
         %li
-          = link_to "Administración de Usuarios", main_app.en_construccion_path, class: ""
+          = link_to "Administración de Usuarios", main_app.usuarios_path, class: ""
       %li
         = link_to "Perfíl de Usuario", main_app.edit_user_registration_path(current_user), class: ""
   - if current_user.es?(Nivel::CONSULTOR_ADMINISTRADOR) || current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)
     %li.dropdown
-      = link_to clientes_path, class: "dropdown-toggle " do
+      = link_to main_app.clientes_path, class: "dropdown-toggle " do
         %i.fa.fa-cubes
         %span.hidden-xs Preferencias
   - if current_user.es?(Nivel::OPERADOR_ADMINISTRADOR)        

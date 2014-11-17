@@ -1,0 +1,51 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Usuarios", dashboard_path
+      %li
+        = link_to "Administración", usuarios_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Administración de Usuarios
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      .row
+        .col-sm-4
+          = link_to 'Nuevo Usuarios', new_usuario_path, class: 'btn btn-primary'
+      .row
+        .col-sm-8
+          %h4.page-header Administración de Usuarios
+          %table.table.table-bordered.table-striped.table-hover.table-heading.table-datatable.dataTable#tabla_listado_usuarios
+            %thead
+              %tr
+                %th Nombre
+                %th Apellido
+                %th Telefono
+                %th Celular
+                %th Nivel
+                %th
+                %th
+            %tbody
+              - @usuarios.each do |usuario|
+                %tr
+                  %td= usuario.nombre
+                  %td= usuario.apellido
+                  %td= usuario.telefono
+                  %td= usuario.celular
+                  %td= usuario.nivel.descripcion
+                  %td= link_to 'Edit', edit_usuario_path(usuario)
+                  %td= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,5 +1,7 @@
 Creditumv3::Application.routes.draw do
 
+  resources :usuarios
+
   resources :clientes
 
   resources :facturas do

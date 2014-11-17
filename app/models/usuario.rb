@@ -2,6 +2,7 @@ class Usuario < ActiveRecord::Base
   self.table_name = 'usuarios'
   self.primary_key = :cedula
 
+  attr_accessor :email
   belongs_to :cliente, primary_key: 'id_cliente', foreign_key: "id_cliente"
   belongs_to :nivel, primary_key: 'id_nivel', foreign_key: "id_nivel"
   belongs_to :consulta, primary_key: 'cedula', foreign_key: "cedula_usuario"
@@ -11,11 +12,15 @@ class Usuario < ActiveRecord::Base
   validates :cliente, presence: true
   validates :nivel, presence: true
   validates :cedula, :nombre, :apellido, :telefono, :celular, :nacionalidad, presence: true
+  validates :cedula, uniqueness: true
 
   def nombre_completo
     nombre + " " + apellido
   end
 
+  def email
+    user.email
+  end
   def es?(nvl)
     nvl == id_nivel
   end
