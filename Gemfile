@@ -52,3 +52,5 @@ gem 'cancan'
 gem 'rails_admin'
 
 gem 'thinreports-rails'
+
+gem 'paperclip'

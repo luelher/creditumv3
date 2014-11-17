@@ -35,8 +35,8 @@
         %br
         %h5.page-header Tipo de Archivo
         .row
-          .col-sm-2
-            = select_tag :tipo, options_for_select(Credito::FORMATOS_ARCHIVOS)
+          .col-sm-3
+            = select_tag :tipo, options_for_select(Credito::FORMATOS_ARCHIVOS), class: 'form-control'
         %br        
         .row
           .col-sm-2

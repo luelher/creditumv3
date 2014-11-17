@@ -22,6 +22,14 @@ class PersonaNatural < ActiveRecord::Base
     end    
   end
 
+  def nombre_apellido
+    "#{nombre} #{apellido}"
+  end
+
+  def cedula_identidad
+    cedula
+  end
+
   private
     def set_defaults
       if self.nacionalidad.to_s.empty?

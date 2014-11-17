@@ -2429,3 +2429,29 @@ $(document).ready(function () {
 });
 
 
+
+var datatables_es = {
+	"Processing":     "Procesando...",
+	"LengthMenu":     "Mostrar _MENU_ registros",
+	"ZeroRecords":    "No se encontraron resultados",
+	"EmptyTable":     "Ningún dato disponible en esta tabla",
+	"Info":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	"InfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+	"InfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+	"InfoPostFix":    "",
+	"Search":         "Buscar:",
+	"Url":            "",
+	"InfoThousands":  ",",
+	"LoadingRecords": "Cargando...",
+	"Paginate": {
+		"First":    "Primero",
+		"Last":     "Último",
+		"Next":     "Siguiente",
+		"Previous": "Anterior"
+	},
+	"Aria": {
+		"SortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		"SortDescending": ": Activar para ordenar la columna de manera descendente"
+	}
+};
+

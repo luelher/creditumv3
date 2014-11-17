@@ -50,25 +50,25 @@
                       = c.fields_for :cliente_persona do |cli|
                         = cli.fields_for :persona_natural do |per|
                           %td
-                            = per.text_field :cedula, placeholder: "Cedula", :class => "seach_persona"
+                            = per.text_field :cedula, placeholder: "Cedula", :class => "seach_persona", class: "form-control"
                             = cli.hidden_field :id_cliente_persona
                             = c.hidden_field :id
                           %td
-                            = per.text_field :nombre, placeholder: "Nombre"
+                            = per.text_field :nombre, placeholder: "Nombre", class: "form-control"
                           %td
-                            = per.text_field :apellido, placeholder: "Apellido"
+                            = per.text_field :apellido, placeholder: "Apellido", class: "form-control"
                           %td
                             = c.text_field :factura, placeholder: "Nro Factura", class: "seach_factura"
                           %td
                             = c.text_field :fecha_compra, placeholder: "Fecha Factura", class: "fechas"
                           %td
-                            = c.text_field :pago_mes, placeholder: "Pago Mensual"
+                            = c.text_field :pago_mes, placeholder: "Pago Mensual", class: "form-control"
                           %td
-                            = c.text_field :num_giros, placeholder: "Nro Giros"
+                            = c.text_field :num_giros, placeholder: "Nro Giros", class: "form-control"
                           %td
-                            = c.text_field :monto, placeholder: "Monto Total"
+                            = c.text_field :monto, placeholder: "Monto Total", class: "form-control"
                           %td
-                            = c.select :experiencia, options_for_select(Credito::EXPERIENCIAS, c.object.experiencia)
+                            = c.select :experiencia, options_for_select(Credito::EXPERIENCIAS, c.object.experiencia), class: "form-control"
           / .col-sm-2
           /   = text_field_tag :cedula, "", class: "form-control", placeholder: "Nro. Cédula."
         .row

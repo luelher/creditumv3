@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id cliente:</strong>
+  <%= @factura.id_cliente %>
+</p>
+
+<p>
+  <strong>Fecha desde:</strong>
+  <%= @factura.fecha_desde %>
+</p>
+
+<p>
+  <strong>Fecha hasta:</strong>
+  <%= @factura.fecha_hasta %>
+</p>
+
+<p>
+  <strong>Validas:</strong>
+  <%= @factura.validas %>
+</p>
+
+<p>
+  <strong>Fallidas:</strong>
+  <%= @factura.fallidas %>
+</p>
+
+<%= link_to 'Edit', edit_factura_path(@factura) %> |
+<%= link_to 'Back', facturas_path %>

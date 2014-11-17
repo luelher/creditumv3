@@ -4,23 +4,23 @@
   #Primera página
   report.start_new_page
 
-  # report.page.item(:logo).value()
-  report.page.item(:casa_comercial).value("Agencia Royal 33 C.A.")
-  report.page.item(:direccion).value("La Direccion")
-  report.page.item(:telefono).value("0424-5558074")
-  report.page.item(:descripcion).value("Calle 33 con av 20")
-  report.page.item(:pie).value("Constancia que se expide a petición de la parte interesada en Barquisimeto a los xx días del mes de yy del aa")
+  report.page.item(:logo).value(@cliente.logo.path)
+  report.page.item(:casa_comercial).value(@cliente.casa_comercial.nombre)
+  report.page.item(:direccion).value(@cliente.direccion)
+  report.page.item(:telefono).value(@cliente.telefono)
+  report.page.item(:descripcion).value(word_wrap("Por medio de la presente hacemos constar que el cliente #{@persona.nombre_apellido} titular de la cédula de identidad Nro: #{@persona.cedula_identidad} obtuvo crédito en esta compañía con las siguientes características:",line_width: 55))
+  report.page.item(:pie).value(word_wrap("Constancia que se expide a petición de la parte interesada en Barquisimeto a los #{Date.today.day} días del mes de #{I18n.t("date.month_names")[Date.today.month].camelcase} del #{Date.today.year}",line_width: 70))
   # report.page.item(:logo).value()
 
-  # report.page.list(:lista_creditos) do |list|
-  #   @creditos.each do |s|
-  #     list.add_row do |row|
-  #       row.item(:fecha_compra).value("fecha compra")
-  #       row.item(:monto).value("1.000,00") 
-  #       row.item(:giros).value("12") 
-  #       row.item(:mensual).value("1.000,00") 
-  #       row.item(:fecha_cancelacion).value("fecha cancelacion")
-  #       row.item(:experiencia).value("1")
-  #     end
-  #   end
-  # end
+  report.page.list(:lista_creditos) do |list|
+    @creditos.each do |s|
+      list.add_row do |row|
+        row.item(:fecha_compra).value(s.fecha_compra.to_s)
+        row.item(:monto).value(number_to_currency(s.monto))
+        row.item(:giros).value(s.num_giros.to_s) 
+        row.item(:mensual).value(number_to_currency(s.pago_mes.to_s)) 
+        row.item(:fecha_cancelacion).value(s.fecha_operacion.to_s)
+        row.item(:experiencia).value(s.experiencia.to_s)
+      end
+    end
+  end

@@ -1,0 +1,51 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Facturación", dashboard_path
+      %li
+        = link_to "Manejar Facturas", facturas_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Manejar Facturas
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      .row
+        .col-sm-8
+          %h4.page-header Facturas Generadas
+          %table.table.table-bordered.table-striped.table-hover.table-heading.table-datatable.dataTable#tabla_listado
+            %thead
+              %tr
+                %th Nro. Factura
+                %th Cliente
+                %th Fecha desde
+                %th Fecha hasta
+                %th Válidas
+                %th Fallidas
+                %th 
+            %tbody
+              - @facturas.each do |factura|
+                %tr
+                  %td= factura.id
+                  %td= factura.casa_y_cliente
+                  %td= factura.fecha_desde
+                  %td= factura.fecha_hasta
+                  %td= factura.validas
+                  %td= factura.fallidas
+                  %td= link_to 'Eliminar', factura, method: :delete, data: { confirm: '¿Estás Seguro? No podrá recuperar esta información' }
+        .col-sm-2
+          .action
+            = link_to 'Nueva Factura', new_factura_path, class: "btn btn-success"

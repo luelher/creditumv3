@@ -1,5 +1,13 @@
 Creditumv3::Application.routes.draw do
 
+  resources :clientes
+
+  resources :facturas do
+    collection do
+      get 'buscar/:desde/:hasta/:cliente' => 'facturas#buscar', as: 'buscar'
+    end
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'admin'
   devise_for :users, 
                 :controllers => {

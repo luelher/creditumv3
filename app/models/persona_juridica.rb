@@ -18,4 +18,12 @@ class PersonaJuridica < ActiveRecord::Base
   end
 
 
+  def nombre_apellido
+    nombre
+  end
+
+  def cedula_identidad
+    rif
+  end
+
 end

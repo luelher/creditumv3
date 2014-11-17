@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928035236) do
+ActiveRecord::Schema.define(version: 20141116161919) do
 
   create_table "casas_comerciales", primary_key: "id_casa_comercial", force: true do |t|
     t.string "nombre",    limit: 60,  null: false
@@ -24,15 +24,19 @@ ActiveRecord::Schema.define(version: 20140928035236) do
   add_index "casas_comerciales", ["nombre"], name: "I_NOMBRE", using: :btree
 
   create_table "clientes", primary_key: "id_cliente", force: true do |t|
-    t.integer "id_casa_comercial"
-    t.string  "nombre",            limit: 30, null: false
-    t.string  "rif",               limit: 15
-    t.string  "nit",               limit: 15
-    t.string  "direccion",         limit: 50
-    t.string  "telefono",          limit: 20
-    t.string  "fax",               limit: 20
-    t.string  "celular",           limit: 20
-    t.string  "email",             limit: 50
+    t.integer  "id_casa_comercial"
+    t.string   "nombre",            limit: 30, null: false
+    t.string   "rif",               limit: 15
+    t.string   "nit",               limit: 15
+    t.string   "direccion",         limit: 50
+    t.string   "telefono",          limit: 20
+    t.string   "fax",               limit: 20
+    t.string   "celular",           limit: 20
+    t.string   "email",             limit: 50
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "clientes", ["id_cliente"], name: "INDEX_ID", unique: true, using: :btree

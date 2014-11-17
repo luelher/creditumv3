@@ -9,4 +9,8 @@ class Nivel < ActiveRecord::Base
 
     has_one :usuario, primary_key: 'id_nivel', foreign_key: "id_nivel"
 
+    def name
+      descripcion
+    end
+
 end
