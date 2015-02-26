@@ -12,11 +12,11 @@ class Credito < ActiveRecord::Base
     "20 (> 180 Días)" => "20",
     "21 (Incobrable)" => "21"}
 
-  has_one :cliente, through: :cliente_persona
-  has_one :persona_natural, through: :cliente_persona
+  has_one :cliente, through: :cliente_persona, autosave: true
+  has_one :persona_natural, through: :cliente_persona, autosave: true
   has_one :persona_juridica, through: :cliente_persona
 
-  has_one :cliente_persona, primary_key: 'id_cliente_persona', foreign_key: "id_cliente_persona"
+  has_one :cliente_persona, primary_key: 'id_cliente_persona', foreign_key: "id_cliente_persona", autosave: true
 
   scope :cantidad_de_creditos_por_cliente, ->(cli){joins(:cliente_persona).where(:clientes_personas => {:id_cliente => cli}).count}
   scope :por_casa_comercial, ->(casa){joins(:cliente => :casa_comercial).where(:casas_comerciales => {:id_casa_comercial => casa})}
@@ -25,6 +25,7 @@ class Credito < ActiveRecord::Base
 
   # validates_presence_of :cliente
   # validates_presence_of :persona_natural
+  validates :id_cliente_persona, presence: true
   validates :cliente_persona, presence: true
   validates :factura, :fecha_compra, :fecha_operacion, :monto, :pago_mes, :num_giros, :experiencia, :estado, presence: true
   validates :num_giros, :experiencia, :estado, numericality: { only_integer: true }

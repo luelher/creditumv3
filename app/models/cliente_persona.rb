@@ -3,9 +3,9 @@ class ClientePersona < ActiveRecord::Base
   self.primary_key = :id_cliente_persona
 
   has_one :persona_juridica, primary_key: 'id_persona', foreign_key: "rif"
-  has_one :persona_natural, primary_key: 'id_persona', foreign_key: "cedula"
+  has_one :persona_natural, primary_key: 'id_persona', foreign_key: "cedula", autosave: true
 
-  has_one :cliente, primary_key: 'id_cliente', foreign_key: "id_cliente"
+  has_one :cliente, primary_key: 'id_cliente', foreign_key: "id_cliente", autosave: true
 
   has_many :creditos, primary_key: 'id_cliente_persona', foreign_key: "id_cliente_persona"
 

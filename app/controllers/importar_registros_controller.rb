@@ -29,14 +29,36 @@ class ImportarRegistrosController < ApplicationController
           cre.experiencia = v["experiencia"]
         end
       else
-        cre = Credito.new(v)
+        cre = Credito.new
+        cre.factura = v["factura"]
+        cre.fecha_compra = v["fecha_compra"]
+        cre.pago_mes = v["pago_mes"]
+        cre.num_giros = v["num_giros"]
+        cre.monto = v["monto"]
+        cre.experiencia = v["experiencia"]
         cre.estado = 0
-        cre.cliente_persona.cliente = current_user.usuario.cliente
         pn = PersonaNatural.find v["cliente_persona_attributes"]["persona_natural_attributes"]["cedula"]
         if pn
-          cre.cliente_persona.persona_natural = pn
+          cp = ClientePersona.where(:id_persona => v["cliente_persona_attributes"]["persona_natural_attributes"]["cedula"], :id_cliente => current_user.usuario.cliente.id_cliente).first
+          unless cp
+            cp = ClientePersona.new
+            cp.cliente = current_user.usuario.cliente
+            cp.persona_natural = pn
+            cp.save
+          end
+        else
+          pn = PersonaNatural.new 
+          pn.cedula = v["cliente_persona_attributes"]["persona_natural_attributes"]["cedula"]
+          pn.nombre = v["cliente_persona_attributes"]["persona_natural_attributes"]["nombre"]
+          pn.apellido = v["cliente_persona_attributes"]["persona_natural_attributes"]["apellido"]
+          pn.save
+          cp = ClientePersona.new
+          cp.cliente = current_user.usuario.cliente
+          cp.persona_natural = pn
+          cp.save
         end
-        cre.cliente_persona.persona_natural.cedula = v["cliente_persona_attributes"]["persona_natural_attributes"]["cedula"]
+        cre.id_cliente_persona = cp.id
+        cre.cliente_persona = cp
       end
       cre.fecha_operacion = Date.today
       @creditos.push cre
@@ -55,27 +77,11 @@ class ImportarRegistrosController < ApplicationController
     @guardados = 0
     @creditos.each do |credito|
       unless credito.cliente_persona.persona_natural.nombre.to_s.empty?
-        if credito.new_record?
-          flash[:danger] = ""
-          unless credito.cliente_persona.persona_natural.save
-            flash[:danger] += credito.cliente_persona.persona_natural.errors.full_messages.join
-          end
-          credito.cliente_persona.id_persona = credito.cliente_persona.persona_natural.cedula
-          credito.cliente_persona.id_cliente = current_user.usuario.id_cliente
-
-          unless credito.cliente_persona.save
-            flash[:danger] += credito.cliente_persona.errors.full_messages.join
-          end
-          credito.id_cliente_persona = credito.cliente_persona.id_cliente_persona
-          if credito.save
-            @guardados += 1
-          else
-            flash[:danger] += credito.errors.full_messages.join
-          end
-        else 
-          if credito.save
-            @guardados += 1
-          end
+        flash[:danger] = ""
+        if credito.save
+          @guardados += 1
+        else
+          flash[:danger] += credito.errors.full_messages.join
         end
       end
     end
