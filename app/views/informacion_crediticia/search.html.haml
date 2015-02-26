@@ -30,6 +30,7 @@
         %br
         = render partial: 'shared/info_historial_crediticio'
       = link_to "Nueva Consulta", informacion_crediticia_path, class: "btn btn-default"
-      - if @persona.tiene_credito_del_cliente?(current_user.usuario.cliente)
-        = link_to "Generar Referencia Comercial", referencia_comercial_path(@persona.id), class: "btn btn-info"
+      - unless @persona.nil?
+        - if @persona.tiene_credito_del_cliente?(current_user.usuario.cliente)
+          = link_to "Generar Referencia Comercial", referencia_comercial_path(@persona.id), class: "btn btn-info"
 

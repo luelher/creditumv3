@@ -1,0 +1,66 @@
+= form_for(@cliente, :html => { :multipart => true }) do |f|
+  - if @cliente.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@cliente.errors.count, "error")
+        prohibited this cliente from being saved:
+      %ul
+        - @cliente.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :casa_comercial
+        %br/
+        = @cliente.casa_comercial.nombre
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :nombre
+        %br/
+        = @cliente.nombre
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :direccion
+        %br/
+        = f.text_area :direccion,  class: "form-control"
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :telefono
+        %br/
+        = f.text_field :telefono,  class: "form-control"
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :fax
+        %br/
+        = f.text_field :fax,  class: "form-control"
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :celular
+        %br/
+        = f.text_field :celular,  class: "form-control"
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :email
+        %br/
+        = f.text_field :email,  class: "form-control"
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :logo
+        %br/
+        = f.file_field :logo
+        %br/
+        - unless @cliente.logo_file_name.nil?
+          = link_to @cliente.logo_file_name, @cliente.logo.url
+        %br/
+        %br/
+  .row
+    .col-sm-10
+      .action
+        = f.submit class: "btn btn-success"

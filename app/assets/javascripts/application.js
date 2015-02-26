@@ -20,6 +20,10 @@
 //= require plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon
 //= require plugins/jquery-ui/i18n/jquery.ui.datepicker-es.min
 //= require plugins/fineuploader/jquery.fineuploader-4.3.1.min
+//= require plugins/datatables/jquery.dataTables.js
+//= require plugins/datatables/ZeroClipboard.js
+//= require plugins/datatables/TableTools.js
+//= require plugins/datatables/dataTables.bootstrap.js
 //= require plugins/raphael/raphael
 //= require plugins/morris/morris
 //= require devoops

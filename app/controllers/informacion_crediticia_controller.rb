@@ -26,8 +26,9 @@ class InformacionCrediticiaController < ApplicationController
   def referencia
     @persona = PersonaNatural.find_by_cedula params[:id]
     @persona = PersonaJuridica.find_by_rif params[:id] if @persona.nil?
-    if @persona.tiene_credito_del_cliente?(current_user.usuario.cliente)
-      @creditos = @persona.creditos.por_casa_comercial(current_user.usuario.cliente.id_casa_comercial)
+    @cliente = current_user.usuario.cliente
+    if @persona.tiene_credito_del_cliente?(@cliente)
+      @creditos = @persona.creditos.por_casa_comercial(@cliente.id_casa_comercial)
     else
       @creditos = []
     end

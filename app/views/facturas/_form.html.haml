@@ -1,0 +1,33 @@
+= form_for(@factura) do |f|
+  - if @factura.errors.any?
+    %div#error_explanation
+      %h2= pluralize(@factura.errors.count, "error") + "prohibited this factura from being saved:"
+
+      %ul
+        - @factura.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :cliente
+        = collection_select(:factura, :id_cliente, Cliente.all.order(:id_casa_comercial), :id, :nombre_con_casa_comercial, {}, {class: "form-control"})
+      .field.col-sm-4
+        = f.label :fecha_desde
+        = f.text_field :fecha_desde, class: "form-control combos_fechas", placeholder: "Seleccione Fecha"
+      .field.col-sm-4
+        = f.label :fecha_hasta
+        = f.text_field :fecha_hasta, class: "form-control combos_fechas", placeholder: "Seleccione Fecha"
+    .col-sm-10
+      .field
+        = link_to "Buscar Consumos", "#", class: "btn consumos"
+    .col-sm-10
+      .field.col-sm-3
+        = f.label :validas
+        = f.number_field :validas,  class: "form-control"
+      .field.col-sm-3
+        = f.label :fallidas
+        = f.number_field :fallidas,  class: "form-control"
+    .col-sm-10
+      .action
+        = f.submit class: "btn btn-success"

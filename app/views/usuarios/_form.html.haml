@@ -1,0 +1,60 @@
+= form_for(@usuario) do |f|
+  - if @usuario.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@usuario.errors.count, "error")
+        prohibited this usuario from being saved:
+      %ul
+        - @usuario.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :cedula
+        %br/
+        = f.text_field :cedula, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :nombre
+        %br/
+        = f.text_field :nombre, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :apellido
+        %br/
+        = f.text_field :apellido, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :telefono
+        %br/
+        = f.text_field :telefono, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :celular
+        %br/
+        = f.text_field :celular, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :nivel
+        %br/
+        = collection_select(:usuario, :id_nivel, Nivel.all.where("id_nivel > 2"), :id_nivel, :descripcion,  {:selected => @usuario.id_nivel}, class: "form-control")
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :email
+        %br/
+        = f.text_field :email, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :password
+        %br/
+        = f.password_field :password, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        = f.label :confirmar_password
+        %br/
+        = f.password_field :confirm_password, class: 'form-control'
+    .col-sm-10
+      .field.col-sm-10
+        %br/
+        .actions
+          = f.submit class: "btn btn-primary"

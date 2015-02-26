@@ -1,0 +1,30 @@
+.row
+  #breadcrumb.col-md-12
+    %ol.breadcrumb
+      %li
+        = link_to "Facturación", dashboard_path
+      %li
+        = link_to "Manejar Facturas", facturas_path
+
+
+= render partial: 'shared/flash_messages'
+.col-xs-12.col-sm-12
+  .box.ui-draggable.ui-droppable
+    .box-header
+      .box-name
+        %i.fa.fa-search
+        %span Crear Factura
+      .box-icons
+        %a.collapse-link
+          %i.fa.fa-chevron-up
+        %a.expand-link
+          %i.fa.fa-expand
+        %a.close-link
+          %i.fa.fa-times
+      .no-move
+    .box-content
+      .row
+        .col-sm-8
+          = render 'form'
+          %br
+          = link_to 'Volver', facturas_path

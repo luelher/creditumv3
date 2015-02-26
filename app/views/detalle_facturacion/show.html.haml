@@ -35,10 +35,10 @@
           %h4.page-header 
             = "Resumen de Consultas Facturadas"
           #graf-estado-cuenta
-        .col-sm-4
+        .col-sm-5
           %h4.page-header Detalle de Consultas Facturadas
           %h5 Acertadas
-          %table.table.table-hover
+          %table.table.table-bordered.table-striped.table-hover.table-heading.table-datatable.dataTable#tabla_acertadas_a
             %thead
               %tr
                 %th Usuario
@@ -50,10 +50,10 @@
                   %td= acertada.usuario.nombre_completo unless acertada.usuario.nil?
                   %td= acertada.id_persona
                   %td= acertada.fecha_hora
-        .col-sm-4
+        .col-sm-5
           %h4.page-header Detalle de Consultas
           %h5 Fallidas
-          %table.table.table-hover
+          %table.table.table-bordered.table-striped.table-hover.table-heading.table-datatable.dataTable#tabla_fallidas_b
             %thead
               %tr
                 %th Usuario

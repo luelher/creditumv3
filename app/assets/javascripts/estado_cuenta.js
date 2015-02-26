@@ -11,4 +11,11 @@ $(document).ready(function(){
     ]
   });
 
+  $('#tabla_acertadas').DataTable( {
+            "language": datatables_es
+        })
+  $('#tabla_fallidas').DataTable( {
+            "language": datatables_es
+        })
+
 })

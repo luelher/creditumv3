@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_casa_comercial: MyText
+  nombre: MyText
+  direccion: MyText
+  telefono: MyText
+  fax: MyText
+  celular: MyText
+  email: MyText
+
+two:
+  id_casa_comercial: MyText
+  nombre: MyText
+  direccion: MyText
+  telefono: MyText
+  fax: MyText
+  celular: MyText
+  email: MyText

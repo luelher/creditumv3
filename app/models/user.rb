@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
     usuario.es?(nvl) unless usuario.nil?
   end
 
+  def name
+    email
+  end
+
 end
